@@ -1,5 +1,17 @@
-// Il computer deve generare 16 numeri casuali tra 1 e 100.
-// I numeri non possono essere duplicati
+//1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
+var numberList = [];
+function randomN(nmin, nmax) {
+  var randomNumber = Math.floor(Math.random() * nmax + nmin);
+  return randomNumber;
+}
+
+var randomNumber = randomN(1, 100);
+console.log(randomNumber);
+
+// var i = 0;
+// while (numberList.length == 16) {
+//   function randomN(1, 100)
+// }
 // In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 // L’utente non può inserire più volte lo stesso numero.
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
