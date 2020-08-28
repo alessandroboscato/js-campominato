@@ -1,15 +1,14 @@
 //1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
-// var bombe = 16;
-// var tentativi = 0;
-// Creo la funzione random e stampo in console il numero
-var numberListCPU = [];
+
+//1.1 Creo la funzione random e stampo in console il numero;
+var listaBombe = [];
 function randomN(nmin, nmax) {
   var randomNumber = Math.floor(Math.random() * nmax + nmin);
   return randomNumber;
 }
 var randomNumber = randomN(1, 100);
 
-// Creo la funzione che dato un array ed un numero controlla che il numero non sia già presente nell'array.
+//1.2 Creo la funzione dato un array ed un numero controlla che il numero non sia già presente nell'array..
 function check(array, num) {
   if (array.includes(num)) {
     return true;
@@ -17,19 +16,38 @@ function check(array, num) {
     return false;
   }
 }
-var checkNumCPU = check(numberListCPU, randomNumber);
+var checkNumCPU = check(listaBombe, randomNumber);
 
-//Creo un ciclo che verifica se non è prente e in tal caso lo inserisce nell'array.
-
-while (numberListCPU.length != 16) {
+//1.3 ..se non è prente inseriscilo nell'array con un ciclo;
+while (listaBombe.length != 16) {
   var randomNumber = randomN(1, 100);
-  if (check(numberListCPU, randomNumber) == false) {
-    numberListCPU.push(randomNumber);
+  if (check(listaBombe, randomNumber) == false) {
+    listaBombe.push(randomNumber);
   }
 }
+console.log(listaBombe);
 
-// In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-// L’utente non può inserire più volte lo stesso numero.
+//2. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100. L’utente non può inserire più volte lo stesso numero.
+var numberG = parseInt(prompt("Inserisci un numero da 1 a 100"));
+
+//2.1 Controlla se il numero inserito dall'utente è presente nella lista delle bombe;
+var numberListG = [];
+var checkNumGBomb = check(listaBombe, numberG);
+
+while ((numberListG.length != 5) && (checkNumGBomb == false)) {
+  var numberG;
+  var checkNumGBomb = check(listaBombe, numberG);
+  var checkNumG1 = check(numberListG, numberG);
+  if (check(listaBombe, numberG) == true) {
+    break;
+    alert("Bomba");
+  } else {
+    if (check(numberListG, numberG) == true) {
+      alert("Hai inserito un numero già scelto.")
+    };
+  numberListG.push(numberG);
+}
+}
 // Se il numero è presente nella lista dei numeri generati, la partita termina, altrimenti si continua chiedendo all’utente un altro numero.
 // La partita termina quando il giocatore inserisce un numero “vietato” o raggiunge il numero massimo possibile di numeri consentiti.
 // Al termine della partita il software deve comunicare il punteggio, cioè il numero di volte che l’utente ha inserito un numero consentito.
