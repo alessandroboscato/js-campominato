@@ -14,9 +14,9 @@ console.log(randomNumber);
 function check(array, num) {
   var output = true;
   if (array.includes(num)) {
-    return output = true;
+    return output == true;
   } else {
-    return output = false;
+    return output == false;
   }
 }
 var checkNumCPU = check(numberListCPU, randomNumber);
@@ -25,15 +25,15 @@ console.log(checkNumCPU);
 //se non è prente, lo inserisco nell'array
 
 var i = 0;
-while (i < 10) {
-  randomNumber;
+while ((i < 100) && (numberListCPU.length != 16)) {
+  var randomNumber = randomN(1, 100);
   if (checkNumCPU == false) {
     numberListCPU.push(randomNumber);
-    console.log(numberListCPU);
   }
   randomNumber;
   i++
 }
+console.log(numberListCPU);
 
 // numberList.length != 16
 
