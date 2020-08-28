@@ -8,34 +8,25 @@ function randomN(nmin, nmax) {
   return randomNumber;
 }
 var randomNumber = randomN(1, 100);
-console.log(randomNumber);
 
-// funzione che dato un array ed un numero controlla che il numero non sia già presente nell'array
+// Creo la funzione che dato un array ed un numero controlla che il numero non sia già presente nell'array.
 function check(array, num) {
-  var output = true;
   if (array.includes(num)) {
-    return output == true;
+    return true;
   } else {
-    return output == false;
+    return false;
   }
 }
 var checkNumCPU = check(numberListCPU, randomNumber);
-console.log(checkNumCPU);
 
-//se non è prente, lo inserisco nell'array
+//Creo un ciclo che verifica se non è prente e in tal caso lo inserisce nell'array.
 
-var i = 0;
-while ((i < 100) && (numberListCPU.length != 16)) {
+while (numberListCPU.length != 16) {
   var randomNumber = randomN(1, 100);
-  if (checkNumCPU == false) {
+  if (check(numberListCPU, randomNumber) == false) {
     numberListCPU.push(randomNumber);
   }
-  randomNumber;
-  i++
 }
-console.log(numberListCPU);
-
-// numberList.length != 16
 
 // In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 // L’utente non può inserire più volte lo stesso numero.
