@@ -14,12 +14,12 @@ function checkIf(array, num) {
   }
 }
 
-//.3 function push that number in the array if not present;
-function pushIf(condition, number, array) {
-  if (condition == false) {
-    array.push(number)
-  }
-}
+// //.3 function push number in array;
+// function pushIf(condition, number, array) {
+//   if (condition == false) {
+//     array.push(number)
+//   }
+// }
 
 //4. function that check range of a number and isNaN;
 function checkNumber(number, nmin, nmax) {
@@ -29,6 +29,7 @@ function checkNumber(number, nmin, nmax) {
     alert("Inserisci un numero.");
   }
 }
+
 //Esercizio
 //1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
 var listaBombe = [];
@@ -36,18 +37,28 @@ var listaBombe = [];
 do {
   var randomNumber = randomN(1, 100);
   var checkNumCPU = checkIf(listaBombe, randomNumber);
-  var pushListBomb = pushIf(checkNumCPU, randomNumber, listaBombe);
+  if (checkNumCPU == false) {
+    listaBombe.push(randomNumber)
+  };
 } while (listaBombe.length != 16);
 console.log(listaBombe);
 
-//2. Chiedi all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
-for (var i = 0; i < 10; i++) {
+//2.1 Chiedi all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
+var numberListG = [];
+while (numberListG.length != 5) {
   var numberG = parseInt(prompt("Inserisci un numero da 1 a 100"));
   var numberGRange = checkNumber(numberG, 1, 100);
+  //2.2 // Controlla che il numero inserito non sia duplicato nell'array utente. Se no pushalo.
+  if (checkNumG1 = checkIf(numberListG, numberG)) {
+    alert("Inserisci un numero che non hai già selezionato.")
+  } else {
+    numberListG.push(numberG);
+    console.log(numberListG);
+  }
+  //2.3
 }
 
 
-// L’utente non può inserire più volte lo stesso numero.
 //2.1 Controlla se il numero inserito dall'utente è presente nella lista delle bombe;
 // var numberListG = [];
 // var checkNumGBomb = check(listaBombe, numberG);
