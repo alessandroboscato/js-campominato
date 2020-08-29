@@ -1,30 +1,34 @@
-//1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
-
-//1.1 Creo la funzione random e stampo in console il numero;
-var listaBombe = [];
+// Functions
+//.1 random number function;
 function randomN(nmin, nmax) {
   var randomNumber = Math.floor(Math.random() * nmax + nmin);
   return randomNumber;
 }
-var randomNumber = randomN(1, 100);
 
-//1.2 Creo la funzione dato un array ed un numero controlla che il numero non sia già presente nell'array..
-function check(array, num) {
+//.2 function check if a number is present in an array, if yes return true;
+function checkIf(array, num) {
   if (array.includes(num)) {
     return true;
   } else {
     return false;
   }
 }
-var checkNumCPU = check(listaBombe, randomNumber);
 
-//1.3 ..se non è prente inseriscilo nell'array con un ciclo;
-while (listaBombe.length != 16) {
-  var randomNumber = randomN(1, 100);
-  if (check(listaBombe, randomNumber) == false) {
-    listaBombe.push(randomNumber);
+//.3 function push that number in the array if not present;
+function pushIf(condition, number, array) {
+  if (condition == false) {
+    array.push(number)
   }
 }
+
+//Esercizio
+//1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
+var listaBombe = [];
+do {
+  var randomNumber = randomN(1, 100);
+  var checkNumCPU = checkIf(listaBombe, randomNumber);
+  var pushListBomb = pushIf(checkNumCPU, randomNumber, listaBombe);
+} while (listaBombe.length != 16);
 console.log(listaBombe);
 
 //2. In seguito deve chiedere all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100. L’utente non può inserire più volte lo stesso numero.
