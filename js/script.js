@@ -14,8 +14,7 @@ function checkIf(array, num) {
   }
 }
 
-
-//4. function that check range of a number and isNaN;
+//.3 function that check range of a number and isNaN;
 function checkNumber(number, nmin, nmax) {
   if ((number < nmin) || (number > nmax)) {
     alert("Il numero inserito dev'essere tra 1 e 100.");
@@ -24,6 +23,23 @@ function checkNumber(number, nmin, nmax) {
   }
 }
 
+//Bonus scelta difficoltà
+// con difficoltà 0 => tra 1 e 100
+// con difficoltà 1 =>  tra 1 e 80
+// con difficoltà 2 => tra 1 e 50
+var choseDifficulty = parseInt(prompt("Scegli la difficoltà del gioco. Scrivi 0, 1 o 2."));
+while ((choseDifficulty != 0) || (choseDifficulty != 1) || (choseDifficulty != 2)) {
+  if (choseDifficulty == 0) {
+    var generatedBomb = 100;
+  } else if (choseDifficulty == 1) {
+    generatedBomb = 80;
+  } else if (choseDifficulty == 2) {
+    generatedBomb = 50;
+  } else {
+      alert("Devi selezionare una difficoltà");
+      var choseDifficulty = prompt("Scegli la difficoltà del gioco. Scrivi 0, 1 o 2.");
+  };
+}
 //Esercizio
 //1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
 var listaBombe = [];
@@ -35,7 +51,6 @@ do {
     listaBombe.push(randomNumber)
   };
 } while (listaBombe.length != 16);
-console.log(listaBombe);
 
 //2.1 Chiedi all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 var numberListG = [];
@@ -48,7 +63,6 @@ while ((numberListG.length != 84) && (haiPerso == false)) {
     alert("Inserisci un numero che non hai già selezionato.")
   } else {
     numberListG.push(numberG);
-    console.log(numberListG);
   }
   //2.3 Controlla se il numero inserito dall'utente è presente nella lista bombe; se si termina il ciclo comunicando all'utente il punteggio.
   var checkNumGBomb = checkIf(listaBombe, numberG);
@@ -60,9 +74,3 @@ while ((numberListG.length != 84) && (haiPerso == false)) {
     alert("Complimenti! Hai vinto il campominato!")
   }
 }
-
-// BONUS: (da fare solo se funziona tutto il resto)
-// all’inizio il software richiede anche una difficoltà all’utente che cambia il range di numeri casuali:
-// con difficoltà 0 => tra 1 e 100
-// con difficoltà 1 =>  tra 1 e 80
-// con difficoltà 2 => tra 1 e 50
