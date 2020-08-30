@@ -18,10 +18,15 @@ function checkIf(array, num) {
 function checkNumber(number, nmin, nmax) {
   if ((number < nmin) || (number > nmax)) {
     alert("Il numero inserito dev'essere tra 1 e " + nmax);
-  } else if (isNaN(number)) {
-    alert("Inserisci un numero.");
-  }
+  };
 }
+
+//4. function that remove NaN from array
+// function removeIfNaN(array) {
+//   array = array.filter(removeIfNaN(element)) {
+//     return element !== inNaN(element);
+//   };
+// }
 
 //Bonus scelta difficoltà
 // con difficoltà 0 => tra 1 e 100
@@ -47,7 +52,6 @@ do {
     listaBombe.push(randomNumber)
   };
 } while (listaBombe.length != 16);
-console.log(listaBombe);
 
 //2.1 Chiedi all’utente (100 - 16) volte di inserire un numero alla volta, sempre compreso tra 1 e 100.
 var numberListG = [];
@@ -58,9 +62,18 @@ while ((numberListG.length != (rangeBomb - listaBombe.length)) && (haiPerso == f
   //2.2 Controlla che il numero inserito non sia duplicato nell'array utente. Se no pushalo.
   if (checkNumG1 = checkIf(numberListG, numberG)) {
     alert("Inserisci un numero che non hai già selezionato.")
+  } else if (isNaN(numberG)) {
+    alert("Inserisci un numero.");
   } else {
     numberListG.push(numberG);
-  }
+    console.log(numberListG);
+  };
+
+  // numberListG = numberListG.filter(function(numberG)) {
+  //   return numberG !== isNaN(numberG);
+  // }
+  // var filteredList = numberListG.filter(!isNaN(numberListG));
+
   //2.3 Controlla se il numero inserito dall'utente è presente nella lista bombe; se si termina il ciclo comunicando all'utente il punteggio.
   var checkNumGBomb = checkIf(listaBombe, numberG);
   if (checkNumGBomb == true) {
