@@ -1,18 +1,33 @@
 // Functions
 //.1 random number function;
 function randomN(nmin, nmax) {
-  var randomNumber = Math.floor(Math.random() * nmax + nmin);
+  var randomNumber = Math.floor(Math.random() * nmax) + nmin;
   return randomNumber;
 }
 
+
 //.2 function check if a number is present in an array, if yes return true;
-function checkIf(array, num) {
-  if (array.includes(num)) {
+function checkIf(array, element) {
+  if (array.includes(element)) {
     return true;
   } else {
     return false;
   }
-}
+};
+
+// Se volessi fare la funzione manualmente..
+// function inArray(array, elemento) {
+//   var trovato = false;
+//
+//   for (var i = 0; i < listabombe.length; i++) {
+//     if(array[i] == elemento) {
+//       trovato = true
+//     }
+//   }
+//   return trovato;
+// }
+// questa funzione mi permette di scorrere tutto l'array e di modificare la variabile trovato da false a true quanto trova la corrispondenza array[i] == elemento;
+
 
 //.3 function that check range of a number and isNaN;
 function checkNumber(number, nmin, nmax) {
@@ -32,15 +47,29 @@ function checkNumber(number, nmin, nmax) {
 // con difficoltà 0 => tra 1 e 100
 // con difficoltà 1 =>  tra 1 e 80
 // con difficoltà 2 => tra 1 e 50
+
 var choseDifficulty = prompt("Scegli la difficoltà del gioco scrivendo facile, medio o difficile. Se non scrivi niente il gioco partirà in modalità facile");
 var rangeBomb = 100;
 
-  if (choseDifficulty == "medio") {
-    var rangeBomb = 80;
-  } else if (choseDifficulty == "difficile") {
-    rangeBomb = 50;
-  };
+  // if (choseDifficulty == "medio") {
+  //   rangeBomb = 80;
+  // } else if (choseDifficulty == "difficile") {
+  //   rangeBomb = 50;
+  // };
 
+switch (choseDifficulty) {
+  case "facile":
+    rangeBomb = 100;
+    break;
+  case "medio":
+    rangeBomb = 80;
+    break;
+  case "difficile":
+    rangeBomb = 50;
+    break;
+  default:
+    rangeBomb = 100;
+}
 //Esercizio
 //1. Il computer deve generare 16 numeri casuali tra 1 e 100. I numeri non possono essere duplicati.
 var listaBombe = [];
@@ -66,9 +95,9 @@ while ((numberListG.length != (rangeBomb - listaBombe.length)) && (haiPerso == f
     alert("Inserisci un numero.");
   } else {
     numberListG.push(numberG);
-    console.log(numberListG);
   };
 
+// TENTATIVO FILTER
   // numberListG = numberListG.filter(function(numberG)) {
   //   return numberG !== isNaN(numberG);
   // }
